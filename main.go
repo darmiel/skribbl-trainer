@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"math/rand"
 	"time"
@@ -13,12 +12,8 @@ var availableWordsArray []string
 
 func main() {
 	rand.Seed(time.Now().Unix())
-	file, err := ioutil.ReadFile("German.json")
-	if err != nil {
-		log.Println("Error:", err)
-		return
-	}
-	if err = json.Unmarshal(file, &availableWords); err != nil {
+
+	if err := json.Unmarshal([]byte(GermanDataJson), &availableWords); err != nil {
 		log.Println("Error parsing:", err)
 		return
 	}
@@ -54,8 +49,6 @@ func main() {
 	go TickWordReveal()
 	go ReadUserInput()
 
-	NextWord()
-
 	sig := make(chan bool)
 	<-sig
 }
@@ -71,7 +64,6 @@ func NextWord() {
 	}
 
 	meta, ok := availableWords[word]
-	log.Println("found meta:", meta, "ok?", ok)
 	if !ok {
 		log.Println("WARN: meta not found for word", word)
 		return

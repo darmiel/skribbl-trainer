@@ -1,3 +1,6 @@
+package main
+
+const GermanDataJson = `
 {
   "Sommersprossen": {
     "count": 5,
@@ -13840,3 +13843,4 @@
     "lastSeenTime": 1586958636395
   }
 }
+`

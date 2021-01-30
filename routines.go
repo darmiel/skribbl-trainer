@@ -25,9 +25,12 @@ func TickWordReveal() {
 					// next word
 					NextWord()
 				}
-				PrintWord()
+			} else {
+				log.Println("current was null lol")
+				NextWord()
 			}
-			break
+
+			PrintWord()
 		}
 	}
 }
