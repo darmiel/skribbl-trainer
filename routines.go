@@ -12,7 +12,7 @@ func TickWordReveal() {
 	// running by default
 	running = true
 
-	ticker := time.NewTicker(1 * time.Second)
+	ticker := time.NewTicker(3 * time.Second)
 	for {
 		select {
 		case <-ticker.C:
@@ -24,8 +24,6 @@ func TickWordReveal() {
 					log.Println("error revealing next character:", err)
 					// next word
 					NextWord()
-				} else {
-					log.Println("-> revealed")
 				}
 				PrintWord()
 			}

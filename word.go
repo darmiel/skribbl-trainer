@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"log"
 	"math/rand"
 	"strings"
 )
@@ -14,6 +13,7 @@ type CurrentWord struct {
 }
 
 var current *CurrentWord
+
 func (c *CurrentWord) IsWord(w string) bool {
 	return strings.ToLower(w) == strings.ToLower(c.Original)
 }
@@ -39,7 +39,6 @@ func (r Revealed) ReturnUnrevealedArray() (res []uint) {
 }
 
 func (m *WordMeta) RevealAtIndex(idx int) {
-	log.Println("revealing at", idx)
 	origB := []byte(m.Word)
 	revB := []byte(m.Revealed)
 	revB[idx] = origB[idx]
